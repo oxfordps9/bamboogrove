@@ -1,0 +1,642 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu — Bamboo Grove, Hyderabad</title>
+<meta name="description" content="Bamboo Grove menu — charcoal grill, BBQ platters, Arabic mezze, Afghan mandi and desi karahi, Jamshoro Road, Hyderabad.">
+<link rel="stylesheet" href="style.css">
+<style>
+    /* Premium Menu Layout Styles from restaurant_menu.html */
+    :root {
+        --text-main: #2b261f;
+        --text-muted: #6e6557;
+        --border-color: #e3ded5;
+        --accent-gold: #c5a059;
+        
+        --color-grill: #a93226;
+        --color-bbq: #d35400;
+        --color-arabic: #d4ac0d;
+        --color-karahi: #784212;
+        --color-rice: #566573;
+        --color-cold: #16a085;
+    }
+
+    .menu-category {
+        margin-bottom: 50px;
+    }
+
+    .category-head {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+    }
+
+    .category-head h3 {
+        font-size: 24px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        display: inline-block;
+    }
+
+    .category-head h3::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -11px;
+        width: 100%;
+        height: 3px;
+    }
+
+    /* Category Specific Colors */
+    [data-category="grill"] h3 { color: var(--color-grill); }
+    [data-category="grill"] h3::after { background-color: var(--color-grill); }
+    
+    [data-category="bbq"] h3 { color: var(--color-bbq); }
+    [data-category="bbq"] h3::after { background-color: var(--color-bbq); }
+    
+    [data-category="arabic"] h3 { color: var(--color-arabic); }
+    [data-category="arabic"] h3::after { background-color: var(--color-arabic); }
+    
+    [data-category="karahi"] h3 { color: var(--color-karahi); }
+    [data-category="karahi"] h3::after { background-color: var(--color-karahi); }
+    
+    [data-category="rice"] h3 { color: var(--color-rice); }
+    [data-category="rice"] h3::after { background-color: var(--color-rice); }
+    
+    [data-category="cold"] h3 { color: var(--color-cold); }
+    [data-category="cold"] h3::after { background-color: var(--color-cold); }
+
+    .category-note {
+        font-size: 14px;
+        font-style: italic;
+        color: var(--text-muted);
+        margin-top: 5px;
+    }
+
+    .grid-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .grid-layout {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .menu-item-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 10px 0;
+    }
+
+    .item-img {
+        width: 80px;
+        height: 80px;
+        border-radius: 6px;
+        object-fit: cover;
+        border: 1px solid var(--border-color);
+        background-color: #fcfbf9;
+        flex-shrink: 0;
+    }
+
+    .item-details {
+        flex-grow: 1;
+    }
+
+    .item-title-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 4px;
+    }
+
+    .item-name {
+        font-size: 17px;
+        font-weight: bold;
+        color: #1a1510;
+    }
+
+    .item-tag {
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 10px;
+        text-transform: uppercase;
+        padding: 2px 6px;
+        background: #f0ede6;
+        color: var(--text-main);
+        border-radius: 3px;
+        margin-left: 8px;
+        font-weight: 600;
+        vertical-align: middle;
+    }
+
+    .item-tag.spicy {
+        background: #faded7;
+        color: #c0392b;
+    }
+
+    .item-price {
+        font-family: 'Segoe UI', sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        color: #1a1510;
+        white-space: nowrap;
+        padding-left: 10px;
+    }
+
+    .item-desc {
+        font-size: 13px;
+        color: var(--text-muted);
+        font-family: 'Segoe UI', sans-serif;
+        line-height: 1.4;
+    }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="17" y="4" width="6" height="32" rx="3" fill="#9CB37E"/>
+        <path d="M20 4C20 4 13 2 10 7C13 8 17 6 20 4Z" fill="#C69A3E"/>
+      </svg>
+      <span class="brand-name">Bamboo Grove</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html" class="active">Menu</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://wa.me/923100004257?text=Assalam-o-Alaikum%2C%20I%27d%20like%20to%20reserve%20a%20table%20at%20Bamboo%20Grove" class="nav-cta" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.51 2 12.04 2zm5.83 14.06c-.24.68-1.42 1.3-1.96 1.38-.5.08-1.13.11-1.83-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.81 2 .88 2.14.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.08.17-.2.71-.83.9-1.11.19-.29.38-.24.63-.14.26.1 1.65.78 1.94.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+        Reserve
+      </a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow on-dark">The Menu</span>
+    <h1>Off the coals, straight to the table.</h1>
+    <p>Grill, BBQ, Arabic mezze, Afghan mandi and desi karahi — built for sharing. Prices in PKR; ask your server about today's specials.</p>
+  </div>
+</section>
+
+<section class="section-tight">
+  <div class="wrap">
+
+    <div class="menu-tabs" role="tablist" aria-label="Filter menu categories">
+      <button class="menu-tab active" data-target="all">All</button>
+      <button class="menu-tab" data-target="grill">Charcoal Grill</button>
+      <button class="menu-tab" data-target="bbq">BBQ Platters</button>
+      <button class="menu-tab" data-target="arabic">Arabic &amp; Afghan</button>
+      <button class="menu-tab" data-target="karahi">Karahi &amp; Handi</button>
+      <button class="menu-tab" data-target="rice">Rice &amp; Bread</button>
+      <button class="menu-tab" data-target="cold">Beverages &amp; Sides</button>
+    </div>
+
+    <div class="menu-category" data-category="grill">
+      <div class="menu-category-head">
+          <h3>Charcoal Grill</h3>
+          <p class="category-note">Finished over open coals, served with mint chutney &amp; salad.</p>
+      </div>
+      <div class="grid-layout">
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=150&q=80" alt="Chicken Seekh Kebab" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Chicken Seekh Kebab <span class="item-tag">Half / Full</span></span>
+                      <span class="item-price">₨ 650 / 1,150</span>
+                  </div>
+                  <p class="item-desc">Hand-minced chicken, charcoal-smoked to smoky perfection.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=150&q=80" alt="Beef Seekh Kebab" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Beef Seekh Kebab</span>
+                      <span class="item-price">₨ 750 / 1,350</span>
+                  </div>
+                  <p class="item-desc">Classic spiced beef mince, grilled to absolute order.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=150&q=80" alt="Chicken Malai Boti" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Chicken Malai Boti</span>
+                      <span class="item-price">₨ 950</span>
+                  </div>
+                  <p class="item-desc">Cream-marinated tender chicken chunks, char-finished.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=150&q=80" alt="Chicken Tikka" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Chicken Tikka <span class="item-tag spicy">Spicy</span></span>
+                      <span class="item-price">₨ 550 / pc</span>
+                  </div>
+                  <p class="item-desc">Bone-in juicy leg piece, layered in our rich tandoor-red marinade.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?auto=format&fit=crop&w=150&q=80" alt="Mutton Boti" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Mutton Boti</span>
+                      <span class="item-price">₨ 1,450</span>
+                  </div>
+                  <p class="item-desc">Tender premium mutton cubes, slow-grilled over low coals.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&q=80" alt="Reshmi Kebab" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Reshmi Kebab</span>
+                      <span class="item-price">₨ 850</span>
+                  </div>
+                  <p class="item-desc">Silky smooth skewered chicken melts with a mild blend of spices.</p>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="menu-category" data-category="bbq">
+      <div class="menu-category-head">
+          <h3>BBQ Platters</h3>
+          <p class="category-note">Built for two to four — the perfect table centerpiece order.</p>
+      </div>
+      <div class="grid-layout">
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=150&q=80" alt="Bamboo BBQ Platter" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Bamboo Special BBQ Platter <span class="item-tag">Serves 3–4</span></span>
+                      <span class="item-price">₨ 3,600</span>
+                  </div>
+                  <p class="item-desc">Seekh, tikka, boti &amp; malai boti served with fresh naan, salad, and signature chutney.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=150&q=80" alt="Family Grill Platter" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Family Grill Platter <span class="item-tag">Serves 4–5</span></span>
+                      <span class="item-price">₨ 4,800</span>
+                  </div>
+                  <p class="item-desc">A generous luxury mix grill accompanied with grilled lamb chops &amp; fresh fish.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=150&q=80" alt="Lamb Chops" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Lamb Chops</span>
+                      <span class="item-price">₨ 1,950</span>
+                  </div>
+                  <p class="item-desc">Marinated overnight in custom spices, beautifully finished over live coal.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=150&q=80" alt="Grilled Fish" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Grilled Fish</span>
+                      <span class="item-price">₨ 1,650</span>
+                  </div>
+                  <p class="item-desc">Whole caught river fish featuring a bold, tawa-charred aromatic spice crust.</p>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="menu-category" data-category="arabic">
+      <div class="menu-category-head">
+          <h3>Arabic &amp; Afghan Kitchen</h3>
+          <p class="category-note">Traditional Mandi, artisanal mezze plates &amp; slow-cooked Kabuli favorites.</p>
+      </div>
+      <div class="grid-layout">
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=150&q=80" alt="Chicken Mandi" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Chicken Mandi</span>
+                      <span class="item-price">₨ 1,750</span>
+                  </div>
+                  <p class="item-desc">Authentic slow-smoked chicken resting gracefully over long-grain saffron rice.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=150&q=80" alt="Mutton Mandi" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Mutton Mandi</span>
+                      <span class="item-price">₨ 2,600</span>
+                  </div>
+                  <p class="item-desc">Prepared via the ancient Yemeni-style smoke pit method for fall-off-the-bone meat.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=150&q=80" alt="Arabic Mezze Board" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Arabic Mezze Board</span>
+                      <span class="item-price">₨ 950</span>
+                  </div>
+                  <p class="item-desc">Creamy signature hummus, smoky mutabbal, garlic sauce, and hot khubz bread.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&w=150&q=80" alt="Kabuli Pulao" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Kabuli Pulao</span>
+                      <span class="item-price">₨ 1,350</span>
+                  </div>
+                  <p class="item-desc">Fragrant lamb stew rice layered with sweet glazed julienne carrots &amp; premium raisins.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=150&q=80" alt="Afghani Chapli Kebab" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Afghani Chapli Kebab <span class="item-tag spicy">Spicy</span></span>
+                      <span class="item-price">₨ 850</span>
+                  </div>
+                  <p class="item-desc">Crispy flat-pressed minced beef patties laced with crushed pomegranate seeds.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=150&q=80" alt="Garlic Sauce & Khubz" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Garlic Sauce &amp; Khubz</span>
+                      <span class="item-price">₨ 250</span>
+                  </div>
+                  <p class="item-desc">A must-have side portion companion — always ordered twice by our guests.</p>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="menu-category" data-category="karahi">
+      <div class="menu-category-head">
+          <h3>Karahi &amp; Handi</h3>
+          <p class="category-note">Finished carefully in-pan, served bubbling hot straight to your table.</p>
+      </div>
+      <div class="grid-layout">
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=150&q=80" alt="Peshawari Chicken Karahi" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Peshawari Chicken Karahi <span class="item-tag spicy">Spicy</span></span>
+                      <span class="item-price">₨ 1,850 <small>(Full)</small></span>
+                  </div>
+                  <p class="item-desc">Bone-in chicken slow-cooked with fresh tomatoes and hand-pounded whole spice blends.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=150&q=80" alt="Mutton Karahi" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Mutton Karahi</span>
+                      <span class="item-price">₨ 2,950 <small>(Full)</small></span>
+                  </div>
+                  <p class="item-desc">Tender mutton pieces simmered heavily in an organic tomato, ginger, &amp; chili reduction.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=150&q=80" alt="Chicken White Handi" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Chicken White Handi</span>
+                      <span class="item-price">₨ 1,650</span>
+                  </div>
+                  <p class="item-desc">Boneless chicken cubes simmered inside a velvety luxury cream &amp; cashew nut gravy base.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=150&q=80" alt="Achari Chicken Karahi" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Achari Chicken Karahi <span class="item-tag spicy">Spicy</span></span>
+                      <span class="item-price">₨ 1,800</span>
+                  </div>
+                  <p class="item-desc">A festive pickled-spice stir fry recipe that is heavily tangy, bold, and fiery.</p>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="menu-category" data-category="rice">
+      <div class="menu-category-head">
+          <h3>Rice &amp; Bread</h3>
+          <p class="category-note">Baked fresh off the clay tandoor and cast iron tawa.</p>
+      </div>
+      <div class="grid-layout">
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=150&q=80" alt="Chicken Fried Rice" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Chicken Fried Rice</span>
+                      <span class="item-price">₨ 650</span>
+                  </div>
+                  <p class="item-desc">Wok-tossed aromatic rice packed with fine chicken shreds and crisp garden vegetables.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=150&q=80" alt="Vegetable Fried Rice" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Vegetable Fried Rice</span>
+                      <span class="item-price">₨ 550</span>
+                  </div>
+                  <p class="item-desc">Fluffy long-grain rice wok-tossed with fresh seasonal greens and light soy sauce seasoning.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&w=150&q=80" alt="Plain Naan" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Plain Naan</span>
+                      <span class="item-price">₨ 60</span>
+                  </div>
+                  <p class="item-desc">Soft, pillowy traditional tandoori leavened flatbread freshly slapped in our clay oven.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1613144383900-e3aa41b56ce1?auto=format&fit=crop&w=150&q=80" alt="Garlic Naan" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Garlic Naan</span>
+                      <span class="item-price">₨ 120</span>
+                  </div>
+                  <p class="item-desc">Freshly baked flatbread topped generously with minced garlic and melted dairy butter.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=150&q=80" alt="Sheermal" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Sheermal</span>
+                      <span class="item-price">₨ 150</span>
+                  </div>
+                  <p class="item-desc">Saffron-infused semi-sweet traditional flatbread baked to a stunning rich golden color.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&w=150&q=80" alt="Roghni Naan" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Roghni Naan</span>
+                      <span class="item-price">₨ 100</span>
+                  </div>
+                  <p class="item-desc">Rich tandoori bread layered with dynamic patterns, brushed with ghee and sesame seeds.</p>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="menu-category" data-category="cold">
+      <div class="menu-category-head">
+          <h3>Beverages &amp; Sides</h3>
+          <p class="category-note">Refreshments to balance your intense charcoal platters perfectly.</p>
+      </div>
+      <div class="grid-layout">
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=150&q=80" alt="Mint Margarita" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Fresh Lime / Mint Margarita</span>
+                      <span class="item-price">₨ 350</span>
+                  </div>
+                  <p class="item-desc">An ice-blended refreshing fusion of crushed garden mint leaves, fresh lime, and soda.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=150&q=80" alt="Kashmiri Chai" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Kashmiri Chai <small>(Pot)</small></span>
+                      <span class="item-price">₨ 450</span>
+                  </div>
+                  <p class="item-desc">Traditional rich pink tea cooked slowly and garnished elegantly with crushed pistachios.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=150&q=80" alt="Soft Drinks" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Soft Drinks</span>
+                      <span class="item-price">₨ 150</span>
+                  </div>
+                  <p class="item-desc">Chilled selection of popular carbonated beverages to satisfy your dynamic table needs.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1607532941433-304659e8198a?auto=format&fit=crop&w=150&q=80" alt="Soup" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Corn &amp; Chicken Soup</span>
+                      <span class="item-price">₨ 450</span>
+                  </div>
+                  <p class="item-desc">A rich comforting warm starter bowl filled to the brim with egg drops, sweet corn, and chicken.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=150&q=80" alt="Green Salad" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Green Salad</span>
+                      <span class="item-price">₨ 250</span>
+                  </div>
+                  <p class="item-desc">Crisp farm-fresh sliced cucumbers, red onions, tomatoes, and organic lemon dressing.</p>
+              </div>
+          </div>
+          <div class="menu-item-card">
+              <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=150&q=80" alt="Raita" class="item-img">
+              <div class="item-details">
+                  <div class="item-title-row">
+                      <span class="item-name">Raita</span>
+                      <span class="item-price">₨ 200</span>
+                  </div>
+                  <p class="item-desc">Chilled whipped yogurt subtly mixed with fresh roasted cumin seed powder and micro-herbs.</p>
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="menu-note-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+      <div>
+        <strong>Menu &amp; prices are indicative</strong> and may vary with seasonal ingredient cost. For the current price list, large group bookings, or a private majlis setup, message us directly on WhatsApp.
+        <div style="margin-top:14px;">
+          <a href="https://wa.me/923100004257?text=Assalam-o-Alaikum%2C%20could%20you%20share%20today%27s%20menu%20and%20prices%3F" class="btn btn-primary" style="padding:10px 18px; font-size:13px;" target="_blank" rel="noopener">Ask on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="17" y="4" width="6" height="32" rx="3" fill="#9CB37E"/>
+            <path d="M20 4C20 4 13 2 10 7C13 8 17 6 20 4Z" fill="#C69A3E"/>
+          </svg>
+          <span class="brand-name">Bamboo Grove</span>
+        </a>
+        <p>Grill &amp; Middle Eastern kitchen on Jamshoro Road, Hyderabad — beside Al-Manzar View Point.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h5>Explore</h5>
+          <a href="menu.html">Menu</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact &amp; Map</a>
+        </div>
+        <div class="footer-col">
+          <h5>Reach Us</h5>
+          <a href="tel:+923100004257">+92 310 0004257</a>
+          <a href="https://wa.me/923100004257" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://www.instagram.com/bamboogrove01/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.facebook.com/p/Bamboo-Grove-61557427318440/" target="_blank" rel="noopener">Facebook</a>
+        </div>
+        <div class="footer-col">
+          <h5>Hours</h5>
+          <p>Daily — 5:00 PM to 12:00 AM</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Bamboo Grove Restaurant, Hyderabad.</span>
+      <span>Hours may shift on public holidays — confirm on WhatsApp.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/923100004257?text=Assalam-o-Alaikum%2C%20I%27d%20like%20to%20ask%20about%20Bamboo%20Grove" class="wa-float" target="_blank" rel="noopener" aria-label="Chat with Bamboo Grove on WhatsApp">
+  <span class="wa-tooltip">Chat on WhatsApp</span>
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.51 2 12.04 2zm5.83 14.06c-.24.68-1.42 1.3-1.96 1.38-.5.08-1.13.11-1.83-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.16-4.94-4.35-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.27-.29.58-.36.78-.36.2 0 .39 0 .56.01.18.01.42-.07.65.5.24.58.81 2 .88 2.14.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.08.17-.2.71-.83.9-1.11.19-.29.38-.24.63-.14.26.1 1.65.78 1.94.92.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
